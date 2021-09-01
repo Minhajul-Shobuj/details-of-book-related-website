@@ -4,12 +4,20 @@ const searchText = () => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayResult(data.docs));
+    input.value = '';
 }
 
 const displayResult = (data) => {
-    console.log(data);
+    const results = document.getElementById('results');
+    results.innerHTML = '';
+    // for book value
+    const resultValue = document.getElementById('result-value');
+    resultValue.innerHTML = '';
+    const h5 = document.createElement('h5');
+    h5.innerHTML = `Showing <span class="text-success fw-bolder">${data.length}</span> books`;
+    resultValue.appendChild(h5);
+    // for book with details 
     data.forEach(element => {
-        const results = document.getElementById('results');
         const div = document.createElement('div');
         div.classList.add('col')
         div.innerHTML = `<div class="d-flex flex-row card">
