@@ -1,9 +1,19 @@
 const searchText = () => {
     const input = document.getElementById('input-field');
-    const url = ` http://openlibrary.org/search.json?q=${input.value}`
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayResult(data.docs));
+    if (input.value === '') {
+        //for empty input field;
+        const noResult = document.getElementById('no-result');
+        noResult.innerHTML = '';
+        const h1 = document.createElement('h1');
+        h1.innerHTML = `<h1>"please, enter a book name"</h1>`
+        noResult.appendChild(h1);
+    }
+    else {
+        const url = ` http://openlibrary.org/search.json?q=${input.value}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displayResult(data.docs));
+    }
     input.value = '';
 }
 
@@ -11,7 +21,8 @@ const displayResult = (data) => {
     if (data.length === 0) {
         //for no result
         const noResult = document.getElementById('no-result');
-        const h1 = document.createElement('h1')
+        noResult.innerHTML = '';
+        const h1 = document.createElement('h1');
         h1.innerHTML = `<h1>"No Result Found{--}"</h1>`
         noResult.appendChild(h1);
     }
