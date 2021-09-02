@@ -13,7 +13,7 @@ const searchText = () => {
         noResult.appendChild(h1);
     }
     else {
-        const url = ` http://openlibrary.org/search.json?q=${input.value}`
+        const url = `  https://openlibrary.org/search.json?q=${input.value}`
         fetch(url)
             .then(res => res.json())
             .then(data => displayResult(data.docs));
