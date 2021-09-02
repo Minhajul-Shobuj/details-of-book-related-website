@@ -43,8 +43,8 @@ const displayResult = (data) => {
         data.forEach(element => {
             const div = document.createElement('div');
             div.classList.add('col')
-            div.innerHTML = `<div class="d-flex flex-row card h-100">
-        <div>
+            div.innerHTML = `<div class="d-flex flex-row align-items-center justify-content-around card h-100">
+        <div class="ms-2">
         <img src=" https://covers.openlibrary.org/b/id/${element.cover_i}-M.jpg" class="card-img-top" alt="...">
     </div>
         <div class="card-body w-50">
