@@ -1,6 +1,10 @@
 const searchText = () => {
     const input = document.getElementById('input-field');
     if (input.value === '') {
+        const results = document.getElementById('results');
+        results.innerHTML = '';
+        const resultValue = document.getElementById('result-value');
+        resultValue.innerHTML = '';
         //for empty input field;
         const noResult = document.getElementById('no-result');
         noResult.innerHTML = '';
@@ -19,6 +23,10 @@ const searchText = () => {
 
 const displayResult = (data) => {
     if (data.length === 0) {
+        const results = document.getElementById('results');
+        results.innerHTML = '';
+        const resultValue = document.getElementById('result-value');
+        resultValue.innerHTML = '';
         //for no result
         const noResult = document.getElementById('no-result');
         noResult.innerHTML = '';
@@ -27,6 +35,8 @@ const displayResult = (data) => {
         noResult.appendChild(h1);
     }
     else {
+        const noResult = document.getElementById('no-result');
+        noResult.innerHTML = '';
         const results = document.getElementById('results');
         results.innerHTML = '';
         // for book value
