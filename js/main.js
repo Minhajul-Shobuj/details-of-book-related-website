@@ -1,13 +1,11 @@
 const searchText = () => {
     const input = document.getElementById('input-field');
     if (input.value === '') {
-        const results = document.getElementById('results');
-        results.innerHTML = '';
-        const resultValue = document.getElementById('result-value');
-        resultValue.innerHTML = '';
+        clearHistory('results');
+        clearHistory('result-value');
         //for empty input field;
         const noResult = document.getElementById('no-result');
-        noResult.innerHTML = '';
+        clearHistory('no-result');
         const h1 = document.createElement('h1');
         h1.innerHTML = `<h1>"please, enter a book name"</h1>`
         noResult.appendChild(h1);
@@ -23,25 +21,21 @@ const searchText = () => {
 
 const displayResult = (data) => {
     if (data.length === 0) {
-        const results = document.getElementById('results');
-        results.innerHTML = '';
-        const resultValue = document.getElementById('result-value');
-        resultValue.innerHTML = '';
+        clearHistory('results');
+        clearHistory('result-value');
         //for no result
         const noResult = document.getElementById('no-result');
-        noResult.innerHTML = '';
+        clearHistory('no-result');
         const h1 = document.createElement('h1');
         h1.innerHTML = `<h1>"No Result Found{--}"</h1>`
         noResult.appendChild(h1);
     }
     else {
-        const noResult = document.getElementById('no-result');
-        noResult.innerHTML = '';
-        const results = document.getElementById('results');
-        results.innerHTML = '';
+        clearHistory('no-result');
+        clearHistory('results');
         // for book value
         const resultValue = document.getElementById('result-value');
-        resultValue.innerHTML = '';
+        clearHistory('result-value');
         const h5 = document.createElement('h5');
         h5.innerHTML = `Showing <span class="text-success fw-bolder">${data.length}</span> books`;
         resultValue.appendChild(h5);
@@ -63,4 +57,10 @@ const displayResult = (data) => {
         });
     }
 
+}
+
+
+const clearHistory = (idName) => {
+    const results = document.getElementById(idName);
+    results.innerHTML = '';
 }
